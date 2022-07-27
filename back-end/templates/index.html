@@ -1,0 +1,11 @@
+<form action="/submit" method="post">
+    <textarea name="details"></textarea>
+    <input type="submit">
+</form>
+
+<ul>
+    
+    {% for item in list %}
+<li> -{{item}}-</li>   
+    {% endfor %}
+</ul>
