@@ -14,3 +14,8 @@ def get_items():
     print(items)
 
     return items  
+
+def api_add(details):
+    temp=details
+    processed = [l for l in temp.decode().split('\r\n') if l.split()]
+    return processed

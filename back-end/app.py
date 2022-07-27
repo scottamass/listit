@@ -1,6 +1,6 @@
 from flask import Flask,request,render_template,url_for,redirect
 
-from functions.createList import create_list,get_items
+from functions.createList import create_list,get_items,api_add
 
 
 def create_app():
@@ -17,7 +17,16 @@ def create_app():
             if request.method=='POST':
                 details = request.form['details']
                 create_list(details)
-                    
+            return redirect(url_for('index') )        
+        @app.route('/api/process', methods=['POST'])       
+        def process():
+            req =request.data
+            decoded=req.decode()
+            print(decoded)
+            data=api_add(req)
+            res={'data':data}
+            return res
+
                 
                        
                    
@@ -25,7 +34,7 @@ def create_app():
 
 
                 
-            return redirect(url_for('index') )  
+              
 
 
         return app
